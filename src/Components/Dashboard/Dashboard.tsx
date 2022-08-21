@@ -9,7 +9,6 @@ const ScoreContainer = styled.div`
 `;
 
 const ChooseContainer = styled.div`
-  border: 1px solid red;
   align-items: center;
   justify-content: center;
   height: 650px;
