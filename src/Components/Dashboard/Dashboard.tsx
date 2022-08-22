@@ -36,34 +36,39 @@ const Modal = styled.div`
 function Dashboard() {
   const [modal, setModal] = useState(false);
 
-  const handleModal = () => {
-    setModal(!modal);
-    console.log(modal);
-  };
-
   let modalRef = useRef<HTMLInputElement>(null);
 
   const handleClose = () => {
+    console.log("handleClose Button", modal);
     setModal(!modal);
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", (e: MouseEvent) => {
+    let handler = (e: MouseEvent) => {
+      console.log("handler modalRef current", modalRef.current);
+      console.log("handler inside useEffect", modal);
       if (!modalRef?.current?.contains(e.target as Node)) {
         setModal(false);
       }
-    });
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
   });
 
   return (
     <>
+      {console.log(modal)}
       <ScoreContainer>
         <Score />
       </ScoreContainer>
       <ChooseContainer>
         <Choose />
       </ChooseContainer>
-      <Button onClick={handleModal}>Rules</Button>
+      <Button onClick={() => setModal((modal) => !modal)}>Rules</Button>
       {modal && (
         <>
           <Modal ref={modalRef} onClick={handleClose}>
@@ -71,7 +76,6 @@ function Dashboard() {
           </Modal>
         </>
       )}
-      cli
     </>
   );
 }
