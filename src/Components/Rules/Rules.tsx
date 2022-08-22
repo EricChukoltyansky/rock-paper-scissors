@@ -5,11 +5,17 @@ import rules from "../../assets/image-rules.svg";
 
 const Container = styled.div`
   display: flex;
+  border: 1px solid grey;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  /* height: 350px; */
+  flex-direction: column;
 `;
 
 const RulesLine = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  flex-direction: row;
 `;
 
 const RulesPic = styled.div`
@@ -24,7 +30,7 @@ function Rules() {
     <>
       <Container>
         <RulesLine>
-          <div>Rules</div>
+          <div>RULES</div>
           <div>
             <img src={close} alt="" />
           </div>

@@ -27,6 +27,12 @@ const Button = styled.button`
   margin-right: 100px;
 `;
 
+const Modal = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 39%;
+`;
+
 function Dashboard() {
   const [modal, setModal] = useState(false);
 
@@ -43,7 +49,14 @@ function Dashboard() {
         <Choose />
       </ChooseContainer>
       <Button onClick={handleModal}>Rules</Button>
-      {modal && <Rules />}
+
+      {modal && (
+        <>
+          <Modal>
+            <Rules />
+          </Modal>
+        </>
+      )}
     </>
   );
 }
