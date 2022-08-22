@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Choose from "../Choose/Choose";
+import Rules from "../Rules/Rules";
 import Score from "../Score/Score";
 
 const ScoreContainer = styled.div`
@@ -23,10 +24,16 @@ const Button = styled.button`
   border: 1px solid white;
   cursor: pointer;
   float: right;
-    margin-right: 100px;
+  margin-right: 100px;
 `;
 
 function Dashboard() {
+  const [modal, setModal] = useState(false);
+
+  const handleModal = () => {
+    setModal(!modal);
+  };
+
   return (
     <>
       <ScoreContainer>
@@ -35,7 +42,8 @@ function Dashboard() {
       <ChooseContainer>
         <Choose />
       </ChooseContainer>
-      <Button>Rules</Button>
+      <Button onClick={handleModal}>Rules</Button>
+      {modal && <Rules />}
     </>
   );
 }
