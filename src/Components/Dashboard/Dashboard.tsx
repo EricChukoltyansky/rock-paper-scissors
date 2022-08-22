@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Choose from "../Choose/Choose";
 import Rules from "../Rules/Rules";
@@ -38,7 +38,22 @@ function Dashboard() {
 
   const handleModal = () => {
     setModal(!modal);
+    console.log(modal);
   };
+
+  let modalRef = useRef<HTMLInputElement>(null);
+
+  const handleClose = () => {
+    setModal(!modal);
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", (e: MouseEvent) => {
+      if (!modalRef?.current?.contains(e.target as Node)) {
+        setModal(false);
+      }
+    });
+  });
 
   return (
     <>
@@ -49,14 +64,14 @@ function Dashboard() {
         <Choose />
       </ChooseContainer>
       <Button onClick={handleModal}>Rules</Button>
-
       {modal && (
         <>
-          <Modal>
-            <Rules />
+          <Modal ref={modalRef} onClick={handleClose}>
+            <Rules onClose={handleClose} />
           </Modal>
         </>
       )}
+      cli
     </>
   );
 }

@@ -16,6 +16,10 @@ const RulesLine = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+
+  img {
+    cursor: pointer;
+  }
 `;
 
 const RulesPic = styled.div`
@@ -25,13 +29,13 @@ const RulesPic = styled.div`
   }
 `;
 
-function Rules() {
+function Rules({ onClose }: { onClose: () => void }) {
   return (
     <>
       <Container>
         <RulesLine>
           <div>RULES</div>
-          <div>
+          <div onClick={onClose}>
             <img src={close} alt="" />
           </div>
         </RulesLine>
