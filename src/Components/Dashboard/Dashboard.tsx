@@ -35,18 +35,19 @@ const Modal = styled.div`
 
 function Dashboard() {
   const [modal, setModal] = useState(false);
+  const [imageSrc, setImageSrc] = useState("");
 
   let modalRef = useRef<HTMLInputElement>(null);
 
   const handleClose = () => {
-    console.log("handleClose Button", modal);
     setModal(!modal);
   };
 
+  const onChoose = (e: any) => {
+    console.log("onChoose", e.target.currentSrc);
+  };
   useEffect(() => {
     let handler = (e: MouseEvent) => {
-      console.log("handler modalRef current", modalRef.current);
-      console.log("handler inside useEffect", modal);
       if (!modalRef?.current?.contains(e.target as Node)) {
         setModal(false);
       }
@@ -61,12 +62,11 @@ function Dashboard() {
 
   return (
     <>
-      {console.log(modal)}
       <ScoreContainer>
         <Score />
       </ScoreContainer>
       <ChooseContainer>
-        <Choose />
+        <Choose handleChoose={onChoose} />
       </ChooseContainer>
       <Button onClick={() => setModal((modal) => !modal)}>Rules</Button>
       {modal && (

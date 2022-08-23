@@ -54,20 +54,30 @@ const Circle = styled.div.attrs(
   }
 `;
 
-function Choose() {
+function Choose({ handleChoose }: { handleChoose: (e: any) => void }) {
   return (
     <>
       <ChooseContainer>
         <Triangle>
           <TriangleImg src={triangle} alt="" />
         </Triangle>
-        <Circle color="red" top="600px">
+        <Circle color="red" top="600px" onClick={(e) => handleChoose(e)}>
           <img src={rock} alt="" />
         </Circle>
-        <Circle color="yellow" top="350px" right="750px">
+        <Circle
+          color="yellow"
+          top="350px"
+          right="750px"
+          onClick={(e) => handleChoose(e)}
+        >
           <img src={scissors} alt="" />
         </Circle>
-        <Circle color="green" top="350px" left="750px">
+        <Circle
+          color="green"
+          top="350px"
+          left="750px"
+          onClick={(e) => handleChoose(e)}
+        >
           <img src={paper} alt="" />
         </Circle>
       </ChooseContainer>
