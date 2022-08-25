@@ -80,7 +80,6 @@ function Dashboard() {
         </ChooseContainer>
       )}
 
-      <Battle imageSrc={imageSrc}></Battle>
       <Button onClick={() => setModal((modal) => !modal)}>Rules</Button>
       {modal && (
         <>

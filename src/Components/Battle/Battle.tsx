@@ -33,13 +33,20 @@ const Circle = styled.div.attrs(
   }
 `;
 
+const Container = styled.div`
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center; ;
+`;
+
 function Battle({ imageSrc }: { imageSrc: string }) {
   return (
-    <div>
+    <Container>
       <Circle>
         <img src={imageSrc} alt="" />
       </Circle>
-    </div>
+    </Container>
   );
 }
 
