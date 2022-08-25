@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 import Battle from "../Battle/Battle";
 import Choose from "../Choose/Choose";
@@ -37,11 +38,16 @@ const Modal = styled.div`
 function Dashboard() {
   const [modal, setModal] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
+  const [battleComponent, setBattleComponent] = useState(false);
 
   let modalRef = useRef<HTMLInputElement>(null);
 
   const handleClose = () => {
     setModal(!modal);
+  };
+
+  const showBattleComponent = () => {
+    setBattleComponent(true);
   };
 
   const onChoose = (e: any) => {
@@ -66,9 +72,14 @@ function Dashboard() {
       <ScoreContainer>
         <Score />
       </ScoreContainer>
-      <ChooseContainer>
-        <Choose handleChoose={onChoose} />
-      </ChooseContainer>
+      {battleComponent ? (
+        <Battle imageSrc={imageSrc} />
+      ) : (
+        <ChooseContainer>
+          <Choose handleChoose={onChoose} trigger={showBattleComponent} />
+        </ChooseContainer>
+      )}
+
       <Battle imageSrc={imageSrc}></Battle>
       <Button onClick={() => setModal((modal) => !modal)}>Rules</Button>
       {modal && (

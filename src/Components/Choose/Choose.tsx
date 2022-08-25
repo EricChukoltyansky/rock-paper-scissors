@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 import triangle from "../../assets/bg-triangle.svg";
 import rock from "../../assets/icon-rock.svg";
@@ -54,10 +55,16 @@ const Circle = styled.div.attrs(
   }
 `;
 
-function Choose({ handleChoose }: { handleChoose: (e: any) => void }) {
+function Choose({
+  handleChoose,
+  trigger,
+}: {
+  handleChoose: (e: any) => void;
+  trigger: React.MouseEventHandler<HTMLDivElement>;
+}) {
   return (
     <>
-      <ChooseContainer>
+      <ChooseContainer onClick={trigger}>
         <Triangle>
           <TriangleImg src={triangle} alt="" />
         </Triangle>
