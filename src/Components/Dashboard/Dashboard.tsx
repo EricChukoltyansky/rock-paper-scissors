@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
+import Battle from "../Battle/Battle";
 import Choose from "../Choose/Choose";
 import Rules from "../Rules/Rules";
 import Score from "../Score/Score";
@@ -44,7 +45,7 @@ function Dashboard() {
   };
 
   const onChoose = (e: any) => {
-    console.log("onChoose", e.target.currentSrc);
+    setImageSrc(e.target.src);
   };
   useEffect(() => {
     let handler = (e: MouseEvent) => {
@@ -68,6 +69,7 @@ function Dashboard() {
       <ChooseContainer>
         <Choose handleChoose={onChoose} />
       </ChooseContainer>
+      <Battle imageSrc={imageSrc}></Battle>
       <Button onClick={() => setModal((modal) => !modal)}>Rules</Button>
       {modal && (
         <>
