@@ -64,6 +64,19 @@ function Battle({ imageSrc }: { imageSrc: string }) {
     }
   };
 
+  const compare = (player: string, computer: string) => {
+    if (player === computer) {
+      setWinner("draw");
+    } else if (
+      (player === "rock" && computer === "scissors") ||
+      (player === "scissors" && computer === "paper") ||
+      (player === "paper" && computer === "rock")
+    ) {
+      setWinner("player");
+    } else {
+      setWinner("computer");
+    }
+  };
   useEffect(() => {
     randomImageSrc();
   }, []);

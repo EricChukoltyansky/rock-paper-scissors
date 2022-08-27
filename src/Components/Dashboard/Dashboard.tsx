@@ -51,6 +51,7 @@ function Dashboard() {
   };
 
   const onChoose = (e: any) => {
+    console.log(e.target);
     setImageSrc(e.target.src);
   };
   useEffect(() => {

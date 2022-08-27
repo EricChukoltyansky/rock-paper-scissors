@@ -62,6 +62,12 @@ function Choose({
   handleChoose: (e: any) => void;
   trigger: React.MouseEventHandler<HTMLDivElement>;
 }) {
+  const images = [
+    { src: rock, name: "rock" },
+    { src: scissors, name: "scissors" },
+    { src: paper, name: "paper" },
+  ];
+
   return (
     <>
       <ChooseContainer onClick={trigger}>
@@ -69,7 +75,7 @@ function Choose({
           <TriangleImg src={triangle} alt="" />
         </Triangle>
         <Circle color="red" top="600px" onClick={(e) => handleChoose(e)}>
-          <img src={rock} alt="" />
+          <img src={images[0].src} alt="" />
         </Circle>
         <Circle
           color="yellow"
@@ -77,7 +83,7 @@ function Choose({
           right="750px"
           onClick={(e) => handleChoose(e)}
         >
-          <img src={scissors} alt="" />
+          <img src={images[1].src} alt="" />
         </Circle>
         <Circle
           color="green"
@@ -85,7 +91,7 @@ function Choose({
           left="750px"
           onClick={(e) => handleChoose(e)}
         >
-          <img src={paper} alt="" />
+          <img src={images[2].src} alt="" />
         </Circle>
       </ChooseContainer>
     </>
