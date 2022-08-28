@@ -2,9 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 import triangle from "../../assets/bg-triangle.svg";
-import rock from "../../assets/icon-rock.svg";
-import scissors from "../../assets/icon-scissors.svg";
-import paper from "../../assets/icon-paper.svg";
+import { images } from "../images.js";
 
 const ChooseContainer = styled.div`
   height: 650px;
@@ -62,12 +60,6 @@ function Choose({
   handleChoose: (e: any) => void;
   trigger: React.MouseEventHandler<HTMLDivElement>;
 }) {
-  const images = [
-    { src: rock, name: "rock" },
-    { src: scissors, name: "scissors" },
-    { src: paper, name: "paper" },
-  ];
-
   return (
     <>
       <ChooseContainer onClick={trigger}>

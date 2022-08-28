@@ -5,6 +5,7 @@ import Battle from "../Battle/Battle";
 import Choose from "../Choose/Choose";
 import Rules from "../Rules/Rules";
 import Score from "../Score/Score";
+import { images } from "../images.js";
 
 const ScoreContainer = styled.div`
   display: flex;
@@ -39,6 +40,7 @@ function Dashboard() {
   const [modal, setModal] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
   const [battleComponent, setBattleComponent] = useState(false);
+  const [chosenItem, setChosenItem] = useState<{ src: string; name: string }>();
 
   let modalRef = useRef<HTMLInputElement>(null);
 
@@ -51,8 +53,17 @@ function Dashboard() {
   };
 
   const onChoose = (e: any) => {
-    console.log(e.target);
+    console.log(e);
     setImageSrc(e.target.src);
+
+    const item = images.find((item) => {
+      return (item.src = e.target.src);
+    });
+
+    
+
+    setChosenItem(item);
+    console.log(chosenItem);
   };
   useEffect(() => {
     let handler = (e: MouseEvent) => {
@@ -74,7 +85,7 @@ function Dashboard() {
         <Score />
       </ScoreContainer>
       {battleComponent ? (
-        <Battle imageSrc={imageSrc} />
+        <Battle imageSrc={chosenItem} />
       ) : (
         <ChooseContainer>
           <Choose handleChoose={onChoose} trigger={showBattleComponent} />
