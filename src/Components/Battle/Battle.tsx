@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import rock from "../../assets/icon-rock.svg";
-import scissors from "../../assets/icon-scissors.svg";
-import paper from "../../assets/icon-paper.svg";
+import { images } from "../images.js";
 
 const Circle = styled.div.attrs(
   (props: {
@@ -51,21 +49,13 @@ function Battle({
   imageSrc: { src: string; name: string } | undefined;
 }) {
   const [randomImage, setRandomImage] = useState("");
+  const [randomImageName, setRandomImageName] = useState("");
   const [winner, setWinner] = useState("");
 
-  const randomImageSrc = () => {
-    let random = Math.floor(Math.random() * 3);
-    switch (random) {
-      case 0:
-        setRandomImage(rock);
-        break;
-      case 1:
-        setRandomImage(scissors);
-        break;
-      case 2:
-        setRandomImage(paper);
-        break;
-    }
+  const randomImageGenerator = () => {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    setRandomImage(images[randomIndex].src);
+    setRandomImageName(images[randomIndex].name);
   };
 
   const compare = (player: string, computer: string) => {
@@ -82,10 +72,12 @@ function Battle({
     }
   };
   useEffect(() => {
-    randomImageSrc();
+    randomImageGenerator();
+    console.log("randomImageName", randomImageName);
+    console.log("imageSrc.name", imageSrc?.name);
     // @ts-ignore
-    compare(imageSrc?.name, randomImage);
-  }, [imageSrc?.name, randomImage]);
+    compare(imageSrc?.name, randomImageName);
+  }, [imageSrc?.name, randomImageName]);
 
   return (
     <Container>

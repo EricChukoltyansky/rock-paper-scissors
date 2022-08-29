@@ -60,8 +60,6 @@ function Dashboard() {
       return (item.src = e.target.src);
     });
 
-    
-
     setChosenItem(item);
     console.log(chosenItem);
   };
