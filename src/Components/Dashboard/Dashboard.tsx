@@ -38,7 +38,6 @@ const Modal = styled.div`
 
 function Dashboard() {
   const [modal, setModal] = useState(false);
-  const [imageSrc, setImageSrc] = useState("");
   const [battleComponent, setBattleComponent] = useState(false);
   const [chosenItem, setChosenItem] = useState<{ src: string; name: string }>();
 
@@ -53,15 +52,16 @@ function Dashboard() {
   };
 
   const onChoose = (e: any) => {
-    console.log(e);
-    setImageSrc(e.target.src);
+    // setChosenItem({ src: e.target.src, name: e.target.name });
 
     const item = images.find((item) => {
+      console.log("item.src:", item.src);
+      console.log("e.target.src:", e.target.src);
       return (item.src = e.target.src);
     });
 
+    console.log("item", item);
     setChosenItem(item);
-    console.log(chosenItem);
   };
   useEffect(() => {
     let handler = (e: MouseEvent) => {

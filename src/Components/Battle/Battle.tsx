@@ -60,21 +60,31 @@ function Battle({
 
   const compare = (player: string, computer: string) => {
     if (player === computer) {
-      setWinner("draw");
-    } else if (
-      (player === "rock" && computer === "scissors") ||
-      (player === "scissors" && computer === "paper") ||
-      (player === "paper" && computer === "rock")
-    ) {
-      setWinner("player");
-    } else {
-      setWinner("computer");
+      setWinner("Draw");
+    } else if (player === "rock") {
+      if (computer === "paper") {
+        setWinner("Computer");
+      } else {
+        setWinner("Player");
+      }
+    } else if (player === "paper") {
+      if (computer === "scissors") {
+        setWinner("Computer");
+      } else {
+        setWinner("Player");
+      }
+    } else if (player === "scissors") {
+      if (computer === "rock") {
+        setWinner("Computer");
+      } else {
+        setWinner("Player");
+      }
     }
   };
   useEffect(() => {
     randomImageGenerator();
-    console.log("randomImageName", randomImageName);
-    console.log("imageSrc.name", imageSrc?.name);
+    // console.log("randomImageName", randomImageName);
+    // console.log("imageSrc.name", imageSrc?.name);
     // @ts-ignore
     compare(imageSrc?.name, randomImageName);
   }, [imageSrc?.name, randomImageName]);
