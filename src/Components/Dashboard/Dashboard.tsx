@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 import Battle from "../Battle/Battle";
 import Choose from "../Choose/Choose";
@@ -52,16 +51,19 @@ function Dashboard() {
   };
 
   const onChoose = (e: any) => {
-    // setChosenItem({ src: e.target.src, name: e.target.name });
+    // const item = images.find((item) => {
+    //   console.log("item.src", item.src);
+    //   console.log("item.name", item.name);
+    //   console.log("e.taget.src", e.target.src);
+    //   return (item.src = e.target.src);
+    // });
 
-    const item = images.find((item) => {
-      console.log("item.src:", item.src);
-      console.log("e.target.src:", e.target.src);
-      return (item.src = e.target.src);
-    });
+    console.log(e);
 
-    console.log("item", item);
-    setChosenItem(item);
+    // const item = images.find(({ src }) => src === e.target.src);
+
+    // console.log("item", item);
+    // setChosenItem(item);
   };
   useEffect(() => {
     let handler = (e: MouseEvent) => {

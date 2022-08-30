@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 import triangle from "../../assets/bg-triangle.svg";
 import { images } from "../images.js";
@@ -67,7 +66,7 @@ function Choose({
           <TriangleImg src={triangle} alt="" />
         </Triangle>
         <Circle color="red" top="600px" onClick={(e) => handleChoose(e)}>
-          <img src={images[0].src} alt="" />
+          <img src={images.rock} alt="" />
         </Circle>
         <Circle
           color="yellow"
@@ -75,7 +74,7 @@ function Choose({
           right="750px"
           onClick={(e) => handleChoose(e)}
         >
-          <img src={images[1].src} alt="" />
+          <img src={images.scissors} alt="" />
         </Circle>
         <Circle
           color="green"
@@ -83,7 +82,7 @@ function Choose({
           left="750px"
           onClick={(e) => handleChoose(e)}
         >
-          <img src={images[2].src} alt="" />
+          <img src={images.paper} alt="" />
         </Circle>
       </ChooseContainer>
     </>

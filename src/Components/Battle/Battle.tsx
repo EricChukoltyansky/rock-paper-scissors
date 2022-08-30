@@ -53,9 +53,22 @@ function Battle({
   const [winner, setWinner] = useState("");
 
   const randomImageGenerator = () => {
-    const randomIndex = Math.floor(Math.random() * images.length);
-    setRandomImage(images[randomIndex].src);
-    setRandomImageName(images[randomIndex].name);
+    const keys = Object.keys(images);
+    const value = Object.values(images);
+    const randomKey = keys[
+      Math.floor(Math.random() * keys.length)
+    ] as keyof typeof images;
+    const randomValue = value[
+      Math.floor(Math.random() * value.length)
+    ] as string;
+    const randomImage = images[randomKey];
+    const randomImageName = images[randomValue];
+
+    console.log(randomImage);
+    console.log(randomImageName);
+
+    // setRandomImage(randomImage.src);
+    // setRandomImageName(randomImage.name);
   };
 
   const compare = (player: string, computer: string) => {
