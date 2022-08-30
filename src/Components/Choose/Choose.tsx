@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import triangle from "../../assets/bg-triangle.svg";
-import { images } from "../images.js";
+import { images } from "../images";
 
 const ChooseContainer = styled.div`
   height: 650px;

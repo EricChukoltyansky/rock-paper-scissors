@@ -4,7 +4,7 @@ import Battle from "../Battle/Battle";
 import Choose from "../Choose/Choose";
 import Rules from "../Rules/Rules";
 import Score from "../Score/Score";
-import { images } from "../images.js";
+import { images } from "../images";
 
 const ScoreContainer = styled.div`
   display: flex;
@@ -57,10 +57,12 @@ function Dashboard() {
     //   console.log("e.taget.src", e.target.src);
     //   return (item.src = e.target.src);
     // });
+    console.log(e.target.src);
 
-    console.log(e);
-
-    // const item = images.find(({ src }) => src === e.target.src);
+    const item = Object.keys(images).find((key) => {
+      console.log("images[key]", images[key]);
+      return images[key] === e.target.src;
+    }) as keyof typeof images;
 
     // console.log("item", item);
     // setChosenItem(item);

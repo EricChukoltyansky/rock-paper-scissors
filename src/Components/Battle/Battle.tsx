@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { images } from "../images.js";
+import { images } from "../images";
 
 const Circle = styled.div.attrs(
   (props: {
@@ -54,21 +54,16 @@ function Battle({
 
   const randomImageGenerator = () => {
     const keys = Object.keys(images);
-    const value = Object.values(images);
     const randomKey = keys[
       Math.floor(Math.random() * keys.length)
     ] as keyof typeof images;
-    const randomValue = value[
-      Math.floor(Math.random() * value.length)
-    ] as string;
+
     const randomImage = images[randomKey];
-    const randomImageName = images[randomValue];
+    const randomImageName = randomKey;
 
-    console.log(randomImage);
-    console.log(randomImageName);
-
-    // setRandomImage(randomImage.src);
-    // setRandomImageName(randomImage.name);
+    setRandomImage(randomImage);
+    // @ts-ignore
+    setRandomImageName(randomImageName);
   };
 
   const compare = (player: string, computer: string) => {
