@@ -43,11 +43,7 @@ const Container = styled.div`
   justify-content: space-around;
 `;
 
-function Battle({
-  imageSrc,
-}: {
-  imageSrc: { src: string; name: string } | undefined;
-}) {
+function Battle({ imageSrc }: { imageSrc: string | undefined }) {
   const [randomImage, setRandomImage] = useState("");
   const [randomImageName, setRandomImageName] = useState("");
   const [winner, setWinner] = useState("");
@@ -92,15 +88,15 @@ function Battle({
   useEffect(() => {
     randomImageGenerator();
     // console.log("randomImageName", randomImageName);
-    // console.log("imageSrc.name", imageSrc?.name);
+    console.log("imageSrc.name", imageSrc);
     // @ts-ignore
     compare(imageSrc?.name, randomImageName);
-  }, [imageSrc?.name, randomImageName]);
+  }, [imageSrc, randomImageName]);
 
   return (
     <Container>
       <Circle>
-        <img src={imageSrc?.src} alt="" />
+        <img src={imageSrc} alt="" />
       </Circle>
       <Circle>
         <img src={randomImage} alt="" />

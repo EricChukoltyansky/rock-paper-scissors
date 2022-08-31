@@ -38,7 +38,7 @@ const Modal = styled.div`
 function Dashboard() {
   const [modal, setModal] = useState(false);
   const [battleComponent, setBattleComponent] = useState(false);
-  const [chosenItem, setChosenItem] = useState<{ src: string; name: string }>();
+  const [chosenItem, setChosenItem] = useState<string | undefined>("");
 
   let modalRef = useRef<HTMLInputElement>(null);
 
@@ -51,20 +51,17 @@ function Dashboard() {
   };
 
   const onChoose = (e: any) => {
-    // const item = images.find((item) => {
-    //   console.log("item.src", item.src);
-    //   console.log("item.name", item.name);
-    //   console.log("e.taget.src", e.target.src);
-    //   return (item.src = e.target.src);
-    // });
-    console.log(e.target.src);
+    let eTargetReplace = e.target.src.replace("http://localhost:3000", "");
 
-    const item = Object.keys(images).find((key) => {
-      console.log("images[key]", images[key]);
-      return images[key] === e.target.src;
-    }) as keyof typeof images;
+    const chosenKey = Object.keys(images).find((key) => {
+      return images[key] === eTargetReplace;
+    });
 
-    // console.log("item", item);
+    const item = Object.entries(images).find(([key, value]) => {
+      return key === chosenKey && value === eTargetReplace;
+    });
+
+    console.log("item", item);
     // setChosenItem(item);
   };
   useEffect(() => {
