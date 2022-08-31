@@ -38,7 +38,7 @@ const Modal = styled.div`
 function Dashboard() {
   const [modal, setModal] = useState(false);
   const [battleComponent, setBattleComponent] = useState(false);
-  const [chosenItem, setChosenItem] = useState<string | undefined>("");
+  const [chosenItem, setChosenItem] = useState<string[] | undefined>();
 
   let modalRef = useRef<HTMLInputElement>(null);
 
@@ -62,7 +62,7 @@ function Dashboard() {
     });
 
     console.log("item", item);
-    // setChosenItem(item);
+    setChosenItem(item);
   };
   useEffect(() => {
     let handler = (e: MouseEvent) => {
@@ -84,7 +84,7 @@ function Dashboard() {
         <Score />
       </ScoreContainer>
       {battleComponent ? (
-        <Battle imageSrc={chosenItem} />
+        <Battle imageSrc={chosenItem!} />
       ) : (
         <ChooseContainer>
           <Choose handleChoose={onChoose} trigger={showBattleComponent} />
