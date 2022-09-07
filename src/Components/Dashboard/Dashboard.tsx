@@ -51,6 +51,10 @@ function Dashboard() {
     setBattleComponent(!battleComponent);
   };
 
+  const handleScore = (score: number) => {
+    setScore(score);
+  };
+
   const onChoose = (e: any) => {
     let eTargetReplace = e.target.src.replace("http://localhost:3000", "");
 
@@ -85,7 +89,11 @@ function Dashboard() {
         <Score score={setScore} />
       </ScoreContainer>
       {battleComponent ? (
-        <Battle imageSrc={chosenItem!} trigger={showBattleComponent} />
+        <Battle
+          imageSrc={chosenItem!}
+          trigger={showBattleComponent}
+          score={handleScore}
+        />
       ) : (
         <ChooseContainer>
           <Choose handleChoose={onChoose} trigger={showBattleComponent} />

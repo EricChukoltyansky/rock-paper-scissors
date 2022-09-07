@@ -32,7 +32,7 @@ const ScoreTitle = styled.div`
   }
 `;
 
-function Score({ score }: { score: number }) {
+function Score({ score }: { score: any }) {
   return (
     <>
       <ScoreContainer>

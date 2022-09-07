@@ -60,9 +60,11 @@ const Winner = styled.div`
 function Battle({
   imageSrc,
   trigger,
+  score,
 }: {
   imageSrc: string[] | undefined;
   trigger: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  score: (e: any) => void;
 }) {
   const [randomImage, setRandomImage] = useState("");
   const [randomImageName, setRandomImageName] = useState("");
