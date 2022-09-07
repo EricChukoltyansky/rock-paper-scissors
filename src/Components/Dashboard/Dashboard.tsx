@@ -47,7 +47,7 @@ function Dashboard() {
   };
 
   const showBattleComponent = () => {
-    setBattleComponent(true);
+    setBattleComponent(!battleComponent);
   };
 
   const onChoose = (e: any) => {
@@ -84,7 +84,7 @@ function Dashboard() {
         <Score />
       </ScoreContainer>
       {battleComponent ? (
-        <Battle imageSrc={chosenItem!} />
+        <Battle imageSrc={chosenItem!} trigger={showBattleComponent} />
       ) : (
         <ChooseContainer>
           <Choose handleChoose={onChoose} trigger={showBattleComponent} />

@@ -39,11 +39,32 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   justify-content: space-around;
 `;
 
-function Battle({ imageSrc }: { imageSrc: string[] | undefined }) {
+const Winner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    color: white;
+  }
+
+  button {
+    cursor: pointer;
+  }
+`;
+
+function Battle({
+  imageSrc,
+  trigger,
+}: {
+  imageSrc: string[] | undefined;
+  trigger: React.MouseEventHandler<HTMLButtonElement> | undefined;
+}) {
   const [randomImage, setRandomImage] = useState("");
   const [randomImageName, setRandomImageName] = useState("");
   const [winner, setWinner] = useState("");
@@ -64,24 +85,24 @@ function Battle({ imageSrc }: { imageSrc: string[] | undefined }) {
 
   const compare = (player: string, computer: string) => {
     if (player === computer) {
-      setWinner("Draw");
+      setWinner("DRAW");
     } else if (player === "rock") {
       if (computer === "paper") {
-        setWinner("Computer");
+        setWinner("AI WIN");
       } else {
-        setWinner("Player");
+        setWinner("YOU WIN");
       }
     } else if (player === "paper") {
       if (computer === "scissors") {
-        setWinner("Computer");
+        setWinner("AI WIN");
       } else {
-        setWinner("Player");
+        setWinner("YOU WIN");
       }
     } else if (player === "scissors") {
       if (computer === "rock") {
-        setWinner("Computer");
+        setWinner("AI WIN");
       } else {
-        setWinner("Player");
+        setWinner("YOU WIN");
       }
     }
   };
@@ -97,10 +118,13 @@ function Battle({ imageSrc }: { imageSrc: string[] | undefined }) {
         {/* @ts-ignore */}
         <img src={imageSrc[1]} alt="" />
       </Circle>
+      <Winner>
+        <h1>{winner}</h1>
+        <button onClick={trigger}>PLAY AGAIN</button>
+      </Winner>
       <Circle>
         <img src={randomImage} alt="" />
       </Circle>
-      {winner}
     </Container>
   );
 }
