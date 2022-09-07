@@ -39,6 +39,7 @@ function Dashboard() {
   const [modal, setModal] = useState(false);
   const [battleComponent, setBattleComponent] = useState(false);
   const [chosenItem, setChosenItem] = useState<string[] | undefined>();
+  const [score, setScore] = useState<number>(0);
 
   let modalRef = useRef<HTMLInputElement>(null);
 
@@ -81,7 +82,7 @@ function Dashboard() {
   return (
     <>
       <ScoreContainer>
-        <Score />
+        <Score score={setScore} />
       </ScoreContainer>
       {battleComponent ? (
         <Battle imageSrc={chosenItem!} trigger={showBattleComponent} />

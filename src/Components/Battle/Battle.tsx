@@ -19,7 +19,6 @@ const Circle = styled.div.attrs(
   text-align: center;
   align-content: center;
   border: 15px solid ${(props) => props.color};
-  /* position: absolute; */
   background: white;
   top: ${(props) => props.top};
   bottom: ${(props) => props.bottom};
