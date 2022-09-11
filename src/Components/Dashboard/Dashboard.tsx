@@ -51,10 +51,6 @@ function Dashboard() {
     setBattleComponent(!battleComponent);
   };
 
-  const handleScore = (score: number) => {
-    setScore(score);
-  };
-
   const onChoose = (e: any) => {
     let eTargetReplace = e.target.src.replace("http://localhost:3000", "");
 
@@ -78,21 +74,25 @@ function Dashboard() {
 
     document.addEventListener("mousedown", handler);
 
+    console.log("useEffect dashboard");
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
+  }, []);
+
+  console.log("Dashboard render");
 
   return (
     <>
       <ScoreContainer>
-        <Score score={setScore} />
+        <Score score={score} />
       </ScoreContainer>
       {battleComponent ? (
         <Battle
           imageSrc={chosenItem!}
           trigger={showBattleComponent}
-          score={handleScore}
+          score={score}
+          setScore={setScore}
         />
       ) : (
         <ChooseContainer>

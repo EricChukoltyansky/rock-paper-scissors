@@ -32,6 +32,8 @@ const ScoreTitle = styled.div`
   }
 `;
 
+console.log("score");
+
 function Score({ score }: { score: any }) {
   return (
     <>
@@ -40,8 +42,7 @@ function Score({ score }: { score: any }) {
           <img src={logo} alt="" />
         </ImgContainer>
         <ScoreTitle>
-          <p>{score}</p>
-          <p className="scoreNumber">10</p>
+          <p className="scoreNumber">{score}</p>
         </ScoreTitle>
       </ScoreContainer>
     </>
