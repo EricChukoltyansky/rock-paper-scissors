@@ -113,39 +113,9 @@ function Battle({
     }
   };
 
-  const handleWinner = (player: string, computer: string) => {
-    switch (player) {
-      case "rock":
-        if (computer === "paper") {
-          setWinner("AI WIN");
-        } else {
-          setWinner("YOU WIN");
-          setScore((prev) => prev + 1);
-        }
-        break;
-      case "paper":
-        if (computer === "scissors") {
-          setWinner("AI WIN");
-        } else {
-          setWinner("YOU WIN");
-          setScore((prev) => prev + 1);
-        }
-        break;
-      case "scissors":
-        if (computer === "rock") {
-          setWinner("AI WIN");
-        } else {
-          setWinner("YOU WIN");
-          setScore((prev) => prev + 1);
-        }
-        break;
-      default:
-        setWinner("DRAW");
-    }
-  };
-
   useEffect(() => {
     getRandomImage();
+    // console.log(imageSrc[0], randomImageName);
     // @ts-ignore
     getWinner(imageSrc[0], randomImageName);
     console.log("I am useEffect battle");
@@ -160,7 +130,15 @@ function Battle({
       </Circle>
       <Winner>
         <h1>{winner}</h1>
-        <button onClick={trigger}>PLAY AGAIN</button>
+        <button
+          onClick={() => {
+            setWinner("");
+            // @ts-ignore
+            trigger();
+          }}
+        >
+          PLAY AGAIN
+        </button>
       </Winner>
       <Circle>
         <img src={randomImage} alt="" />

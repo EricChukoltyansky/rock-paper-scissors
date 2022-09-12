@@ -74,13 +74,10 @@ function Dashboard() {
 
     document.addEventListener("mousedown", handler);
 
-    console.log("useEffect dashboard");
     return () => {
       document.removeEventListener("mousedown", handler);
     };
   }, []);
-
-  console.log("Dashboard render");
 
   return (
     <>

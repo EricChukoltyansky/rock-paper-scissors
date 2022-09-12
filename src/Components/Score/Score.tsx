@@ -32,7 +32,6 @@ const ScoreTitle = styled.div`
   }
 `;
 
-console.log("score");
 
 function Score({ score }: { score: any }) {
   return (
