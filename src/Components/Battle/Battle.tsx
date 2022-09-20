@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { images } from "../images";
 
@@ -74,54 +74,53 @@ function Battle({
 
   const getRandomImage = () => {
     const keys = Object.keys(images);
-    const randomKey = keys[
-      Math.floor(Math.random() * keys.length)
-    ] as keyof typeof images;
+    const randomKey = keys[Math.floor(Math.random() * keys.length)];
 
     const randomImage = images[randomKey];
     const randomImageName = randomKey;
 
-    setRandomImage(randomImage);
-    // @ts-ignore
-    setRandomImageName(randomImageName);
-  };
+    console.log(randomImageName);
+    console.log(randomImage);
 
-  const getWinner = (player: string, computer: string) => {
-    if (player === computer) {
-      setWinner("DRAW");
-    } else if (player === "rock") {
-      if (computer === "paper") {
-        setWinner("AI WIN");
-      } else {
-        setWinner("YOU WIN");
-        setScore(score + 1);
-      }
-    } else if (player === "paper") {
-      if (computer === "scissors") {
-        setWinner("AI WIN");
-      } else {
-        setWinner("YOU WIN");
-        setScore(score + 1);
-      }
-    } else if (player === "scissors") {
-      if (computer === "rock") {
-        setWinner("AI WIN");
-      } else {
-        setWinner("YOU WIN");
-        setScore(score + 1);
-      }
-    }
+    setRandomImage(randomImage);
+    setRandomImageName(randomImageName);
   };
 
   useEffect(() => {
     getRandomImage();
     // console.log(imageSrc[0], randomImageName);
     // @ts-ignore
-    getWinner(imageSrc[0], randomImageName);
-    console.log("I am useEffect battle");
-  }, []);
+    console.log(randomImageName);
+    const getWinner = (player: string, computer: string) => {
+      if (player === computer) {
+        setWinner("DRAW");
+      } else if (player === "rock") {
+        if (computer === "paper") {
+          setWinner("AI WIN");
+        } else {
+          setWinner("YOU WIN");
+          setScore(score + 1);
+        }
+      } else if (player === "paper") {
+        if (computer === "scissors") {
+          setWinner("AI WIN");
+        } else {
+          setWinner("YOU WIN");
+          setScore(score + 1);
+        }
+      } else if (player === "scissors") {
+        if (computer === "rock") {
+          setWinner("AI WIN");
+        } else {
+          setWinner("YOU WIN");
+          setScore(score + 1);
+        }
+      }
+    };
 
-  console.log("I am Battle Component");
+    getWinner(imageSrc[0], randomImageName);
+  }, [imageSrc, randomImageName, score, setScore]);
+
   return (
     <Container>
       <Circle>
