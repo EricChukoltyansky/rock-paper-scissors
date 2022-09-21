@@ -120,7 +120,7 @@ function Battle({
 
     // @ts-ignore
     getWinner(imageSrc[0], randomImageName);
-  }, [imageSrc, randomImageName, score, setScore]);
+  });
 
   return (
     <Container>
